@@ -16,25 +16,38 @@ namespace Wallet_API.Controllers
         {
             this.context = context;
         }
+        /// <param name="userId">The ID of current user. Use userId = 1 for test</param>
+        /// <returns>Transaction List</returns>
         [HttpGet]
         public IActionResult GetTransactionList(int? userId)
         {
             if (userId == null)
-                return NotFound();
+                return BadRequest("userId cannot be null.");
 
-            var transactions = context.Transactions.Include(x=> x.TransactionSender).Where(x => x.UserId == userId).Take(10).Select(x =>
-            new
+            if (!context.Users.Any(x => x.Id == userId))
+                return Ok("User not found.");
+
+            try
             {
-                TransactionName = x.TransactionName,
-                Description = x.TransactionType == "Payment" ? $"{x.TransactionType} - {x.TransactionDescription}" : "",
-                TransactionAmount = x.TransactionType == "Payment" ? $"+{x.TransactionAmount}" : x.TransactionAmount.ToString(),
-                Date = ProcessDate(x),
-                TransactionIcon = x.TransactionIcon
+                var transactions = context.Transactions.Include(x => x.TransactionSender).Where(x => x.UserId == userId).Take(10).Select(x =>
+                new
+                {
+                    TransactionId = x.ID,
+                    TransactionName = x.TransactionName,
+                    Description = x.TransactionType == "Payment" ? $"{x.TransactionType} - {x.TransactionDescription}" : "",
+                    TransactionAmount = x.TransactionType == "Payment" ? $"+{x.TransactionAmount}" : x.TransactionAmount.ToString(),
+                    Date = ProcessDate(x),
+                    TransactionIcon = x.TransactionIcon
 
 
-            });
+                });
 
-            return Ok(transactions);
+                return Ok(transactions);
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         private static string ProcessDate(Transaction transaction)

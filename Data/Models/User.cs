@@ -10,9 +10,11 @@ namespace Wallet_API.Data.DbModels
         public bool IsActive { get; set; }
 
         public List<Transaction> SentTransactions {  get; set; }
+        public List<CardBalance> CardBalances { get; set; }
         public User()
         {
-                SentTransactions = new List<Transaction>();
+            SentTransactions = new List<Transaction>();
+            CardBalances = new List<CardBalance>();
         }
     }
 }

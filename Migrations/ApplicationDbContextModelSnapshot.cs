@@ -22,6 +22,46 @@ namespace Wallet_API.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("Wallet_API.Data.DbModels.CardBalance", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<float>("CardBalanceAmount")
+                        .HasColumnType("real");
+
+                    b.Property<float>("CardLimit")
+                        .HasColumnType("real");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("CardBalances");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CardBalanceAmount = 3.7f,
+                            CardLimit = 1500f,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CardBalanceAmount = 14.71f,
+                            CardLimit = 1500f,
+                            UserId = 2
+                        });
+                });
+
             modelBuilder.Entity("Wallet_API.Data.DbModels.Transaction", b =>
                 {
                     b.Property<int>("ID")
@@ -72,10 +112,10 @@ namespace Wallet_API.Migrations
                         new
                         {
                             ID = 2,
-                            TransactionAmount = 872,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(8767),
+                            TransactionAmount = 293,
+                            TransactionDate = new DateTime(2024, 2, 9, 13, 12, 47, 0, DateTimeKind.Utc),
                             TransactionDescription = "Description for Transaction 2",
-                            TransactionIcon = "dark-bg3 icon1",
+                            TransactionIcon = "dark-bg2 icon1",
                             TransactionName = "Transaction 2 for Common User",
                             TransactionSenderId = 2,
                             TransactionStatus = "Pending",
@@ -85,8 +125,8 @@ namespace Wallet_API.Migrations
                         new
                         {
                             ID = 3,
-                            TransactionAmount = 324,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(8783),
+                            TransactionAmount = 618,
+                            TransactionDate = new DateTime(2024, 2, 8, 0, 47, 22, 916, DateTimeKind.Utc).AddTicks(1665),
                             TransactionDescription = "Description for Transaction 3",
                             TransactionIcon = "dark-bg3 icon1",
                             TransactionName = "Transaction 3 for Common User",
@@ -97,22 +137,22 @@ namespace Wallet_API.Migrations
                         new
                         {
                             ID = 4,
-                            TransactionAmount = 212,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(8835),
+                            TransactionAmount = 586,
+                            TransactionDate = new DateTime(2024, 2, 7, 17, 27, 35, 0, DateTimeKind.Utc),
                             TransactionDescription = "Description for Transaction 4",
-                            TransactionIcon = "dark-bg2 icon1",
+                            TransactionIcon = "dark-bg2 icon2",
                             TransactionName = "Transaction 4 for Common User",
                             TransactionStatus = "Completed",
-                            TransactionType = "Payment",
+                            TransactionType = "Credit",
                             UserId = 1
                         },
                         new
                         {
                             ID = 5,
-                            TransactionAmount = 472,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(8850),
+                            TransactionAmount = 101,
+                            TransactionDate = new DateTime(2024, 2, 8, 0, 47, 22, 916, DateTimeKind.Utc).AddTicks(1685),
                             TransactionDescription = "Description for Transaction 5",
-                            TransactionIcon = "dark-bg2 icon1",
+                            TransactionIcon = "dark-bg3 icon3",
                             TransactionName = "Transaction 5 for Common User",
                             TransactionSenderId = 2,
                             TransactionStatus = "Completed",
@@ -122,22 +162,22 @@ namespace Wallet_API.Migrations
                         new
                         {
                             ID = 6,
-                            TransactionAmount = 312,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(8855),
+                            TransactionAmount = 158,
+                            TransactionDate = new DateTime(2024, 2, 24, 9, 13, 59, 0, DateTimeKind.Utc),
                             TransactionDescription = "Description for Transaction 6",
-                            TransactionIcon = "dark-bg1 icon2",
+                            TransactionIcon = "dark-bg1 icon1",
                             TransactionName = "Transaction 6 for Common User",
-                            TransactionStatus = "Completed",
+                            TransactionStatus = "Pending",
                             TransactionType = "Credit",
                             UserId = 1
                         },
                         new
                         {
                             ID = 7,
-                            TransactionAmount = 239,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(8864),
+                            TransactionAmount = 466,
+                            TransactionDate = new DateTime(2024, 2, 8, 0, 47, 22, 916, DateTimeKind.Utc).AddTicks(1709),
                             TransactionDescription = "Description for Transaction 7",
-                            TransactionIcon = "dark-bg2 icon2",
+                            TransactionIcon = "dark-bg3 icon1",
                             TransactionName = "Transaction 7 for Common User",
                             TransactionStatus = "Completed",
                             TransactionType = "Credit",
@@ -146,10 +186,10 @@ namespace Wallet_API.Migrations
                         new
                         {
                             ID = 8,
-                            TransactionAmount = 492,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(8869),
+                            TransactionAmount = 518,
+                            TransactionDate = new DateTime(2024, 2, 28, 4, 22, 59, 0, DateTimeKind.Utc),
                             TransactionDescription = "Description for Transaction 8",
-                            TransactionIcon = "dark-bg1 icon1",
+                            TransactionIcon = "dark-bg1 icon3",
                             TransactionName = "Transaction 8 for Common User",
                             TransactionSenderId = 2,
                             TransactionStatus = "Completed",
@@ -159,22 +199,22 @@ namespace Wallet_API.Migrations
                         new
                         {
                             ID = 9,
-                            TransactionAmount = 812,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(8878),
+                            TransactionAmount = 664,
+                            TransactionDate = new DateTime(2024, 2, 8, 0, 47, 22, 916, DateTimeKind.Utc).AddTicks(1730),
                             TransactionDescription = "Description for Transaction 9",
-                            TransactionIcon = "dark-bg3 icon3",
+                            TransactionIcon = "dark-bg1 icon3",
                             TransactionName = "Transaction 9 for Common User",
-                            TransactionStatus = "Pending",
+                            TransactionStatus = "Completed",
                             TransactionType = "Credit",
                             UserId = 1
                         },
                         new
                         {
                             ID = 10,
-                            TransactionAmount = 502,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(8883),
+                            TransactionAmount = 435,
+                            TransactionDate = new DateTime(2024, 2, 26, 20, 19, 24, 0, DateTimeKind.Utc),
                             TransactionDescription = "Description for Transaction 10",
-                            TransactionIcon = "dark-bg3 icon1",
+                            TransactionIcon = "dark-bg3 icon2",
                             TransactionName = "Transaction 10 for Common User",
                             TransactionStatus = "Pending",
                             TransactionType = "Credit",
@@ -183,70 +223,70 @@ namespace Wallet_API.Migrations
                         new
                         {
                             ID = 11,
-                            TransactionAmount = 332,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(8890),
+                            TransactionAmount = 948,
+                            TransactionDate = new DateTime(2024, 2, 8, 0, 47, 22, 916, DateTimeKind.Utc).AddTicks(1752),
                             TransactionDescription = "Description for Transaction 11",
-                            TransactionIcon = "dark-bg3 icon3",
+                            TransactionIcon = "dark-bg2 icon2",
                             TransactionName = "Transaction 11 for Common User",
                             TransactionSenderId = 2,
-                            TransactionStatus = "Completed",
+                            TransactionStatus = "Pending",
                             TransactionType = "Payment",
                             UserId = 1
                         },
                         new
                         {
                             ID = 12,
-                            TransactionAmount = 436,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(8896),
+                            TransactionAmount = 172,
+                            TransactionDate = new DateTime(2024, 2, 28, 4, 47, 4, 0, DateTimeKind.Utc),
                             TransactionDescription = "Description for Transaction 12",
-                            TransactionIcon = "dark-bg2 icon1",
+                            TransactionIcon = "dark-bg3 icon3",
                             TransactionName = "Transaction 12 for Common User",
-                            TransactionStatus = "Completed",
-                            TransactionType = "Credit",
+                            TransactionStatus = "Pending",
+                            TransactionType = "Payment",
                             UserId = 1
                         },
                         new
                         {
                             ID = 13,
-                            TransactionAmount = 944,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(8903),
+                            TransactionAmount = 400,
+                            TransactionDate = new DateTime(2024, 2, 8, 0, 47, 22, 916, DateTimeKind.Utc).AddTicks(1771),
                             TransactionDescription = "Description for Transaction 13",
                             TransactionIcon = "dark-bg1 icon1",
                             TransactionName = "Transaction 13 for Common User",
-                            TransactionStatus = "Completed",
-                            TransactionType = "Credit",
+                            TransactionStatus = "Pending",
+                            TransactionType = "Payment",
                             UserId = 1
                         },
                         new
                         {
                             ID = 14,
-                            TransactionAmount = 732,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(8908),
+                            TransactionAmount = 506,
+                            TransactionDate = new DateTime(2024, 2, 28, 0, 5, 46, 0, DateTimeKind.Utc),
                             TransactionDescription = "Description for Transaction 14",
-                            TransactionIcon = "dark-bg3 icon3",
+                            TransactionIcon = "dark-bg1 icon1",
                             TransactionName = "Transaction 14 for Common User",
                             TransactionSenderId = 2,
+                            TransactionStatus = "Pending",
+                            TransactionType = "Payment",
+                            UserId = 1
+                        },
+                        new
+                        {
+                            ID = 15,
+                            TransactionAmount = 313,
+                            TransactionDate = new DateTime(2024, 2, 8, 0, 47, 22, 916, DateTimeKind.Utc).AddTicks(1791),
+                            TransactionDescription = "Description for Transaction 15",
+                            TransactionIcon = "dark-bg1 icon2",
+                            TransactionName = "Transaction 15 for Common User",
                             TransactionStatus = "Pending",
                             TransactionType = "Credit",
                             UserId = 1
                         },
                         new
                         {
-                            ID = 15,
-                            TransactionAmount = 789,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(8913),
-                            TransactionDescription = "Description for Transaction 15",
-                            TransactionIcon = "dark-bg1 icon3",
-                            TransactionName = "Transaction 15 for Common User",
-                            TransactionStatus = "Completed",
-                            TransactionType = "Credit",
-                            UserId = 1
-                        },
-                        new
-                        {
                             ID = 16,
-                            TransactionAmount = 690,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(8918),
+                            TransactionAmount = 110,
+                            TransactionDate = new DateTime(2024, 2, 1, 21, 38, 20, 0, DateTimeKind.Utc),
                             TransactionDescription = "Description for Transaction 16",
                             TransactionIcon = "dark-bg1 icon1",
                             TransactionName = "Transaction 16 for Common User",
@@ -257,10 +297,10 @@ namespace Wallet_API.Migrations
                         new
                         {
                             ID = 17,
-                            TransactionAmount = 808,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(8925),
+                            TransactionAmount = 576,
+                            TransactionDate = new DateTime(2024, 2, 8, 0, 47, 22, 916, DateTimeKind.Utc).AddTicks(1811),
                             TransactionDescription = "Description for Transaction 17",
-                            TransactionIcon = "dark-bg1 icon2",
+                            TransactionIcon = "dark-bg2 icon3",
                             TransactionName = "Transaction 17 for Common User",
                             TransactionSenderId = 2,
                             TransactionStatus = "Completed",
@@ -270,158 +310,158 @@ namespace Wallet_API.Migrations
                         new
                         {
                             ID = 18,
-                            TransactionAmount = 270,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(8930),
+                            TransactionAmount = 771,
+                            TransactionDate = new DateTime(2024, 2, 20, 15, 20, 15, 0, DateTimeKind.Utc),
                             TransactionDescription = "Description for Transaction 18",
-                            TransactionIcon = "dark-bg2 icon1",
-                            TransactionName = "Transaction 18 for Common User",
-                            TransactionStatus = "Completed",
-                            TransactionType = "Payment",
-                            UserId = 1
-                        },
-                        new
-                        {
-                            ID = 19,
-                            TransactionAmount = 478,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(8936),
-                            TransactionDescription = "Description for Transaction 19",
                             TransactionIcon = "dark-bg1 icon1",
-                            TransactionName = "Transaction 19 for Common User",
-                            TransactionStatus = "Pending",
-                            TransactionType = "Payment",
-                            UserId = 1
-                        },
-                        new
-                        {
-                            ID = 20,
-                            TransactionAmount = 917,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(8941),
-                            TransactionDescription = "Description for Transaction 20",
-                            TransactionIcon = "dark-bg1 icon2",
-                            TransactionName = "Transaction 20 for Common User",
-                            TransactionSenderId = 2,
+                            TransactionName = "Transaction 18 for Common User",
                             TransactionStatus = "Completed",
                             TransactionType = "Credit",
                             UserId = 1
                         },
                         new
                         {
-                            ID = 21,
-                            TransactionAmount = 370,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(8947),
-                            TransactionDescription = "Description for Transaction 21",
+                            ID = 19,
+                            TransactionAmount = 368,
+                            TransactionDate = new DateTime(2024, 2, 8, 0, 47, 22, 916, DateTimeKind.Utc).AddTicks(1870),
+                            TransactionDescription = "Description for Transaction 19",
+                            TransactionIcon = "dark-bg2 icon1",
+                            TransactionName = "Transaction 19 for Common User",
+                            TransactionStatus = "Completed",
+                            TransactionType = "Credit",
+                            UserId = 1
+                        },
+                        new
+                        {
+                            ID = 20,
+                            TransactionAmount = 583,
+                            TransactionDate = new DateTime(2024, 2, 26, 21, 9, 47, 0, DateTimeKind.Utc),
+                            TransactionDescription = "Description for Transaction 20",
                             TransactionIcon = "dark-bg3 icon2",
-                            TransactionName = "Transaction 21 for Common User",
+                            TransactionName = "Transaction 20 for Common User",
+                            TransactionSenderId = 2,
                             TransactionStatus = "Pending",
+                            TransactionType = "Payment",
+                            UserId = 1
+                        },
+                        new
+                        {
+                            ID = 21,
+                            TransactionAmount = 916,
+                            TransactionDate = new DateTime(2024, 2, 8, 0, 47, 22, 916, DateTimeKind.Utc).AddTicks(1889),
+                            TransactionDescription = "Description for Transaction 21",
+                            TransactionIcon = "dark-bg1 icon3",
+                            TransactionName = "Transaction 21 for Common User",
+                            TransactionStatus = "Completed",
                             TransactionType = "Credit",
                             UserId = 1
                         },
                         new
                         {
                             ID = 22,
-                            TransactionAmount = 509,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(8952),
+                            TransactionAmount = 767,
+                            TransactionDate = new DateTime(2024, 2, 5, 10, 54, 48, 0, DateTimeKind.Utc),
                             TransactionDescription = "Description for Transaction 22",
-                            TransactionIcon = "dark-bg1 icon3",
+                            TransactionIcon = "dark-bg3 icon3",
                             TransactionName = "Transaction 22 for Common User",
-                            TransactionStatus = "Pending",
-                            TransactionType = "Credit",
+                            TransactionStatus = "Completed",
+                            TransactionType = "Payment",
                             UserId = 1
                         },
                         new
                         {
                             ID = 23,
-                            TransactionAmount = 193,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(8993),
+                            TransactionAmount = 400,
+                            TransactionDate = new DateTime(2024, 2, 8, 0, 47, 22, 916, DateTimeKind.Utc).AddTicks(1909),
                             TransactionDescription = "Description for Transaction 23",
-                            TransactionIcon = "dark-bg3 icon3",
+                            TransactionIcon = "dark-bg2 icon1",
                             TransactionName = "Transaction 23 for Common User",
                             TransactionSenderId = 2,
                             TransactionStatus = "Completed",
-                            TransactionType = "Credit",
+                            TransactionType = "Payment",
                             UserId = 1
                         },
                         new
                         {
                             ID = 24,
-                            TransactionAmount = 530,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(8998),
+                            TransactionAmount = 540,
+                            TransactionDate = new DateTime(2024, 2, 23, 21, 9, 26, 0, DateTimeKind.Utc),
                             TransactionDescription = "Description for Transaction 24",
-                            TransactionIcon = "dark-bg1 icon2",
+                            TransactionIcon = "dark-bg3 icon3",
                             TransactionName = "Transaction 24 for Common User",
-                            TransactionStatus = "Pending",
-                            TransactionType = "Credit",
+                            TransactionStatus = "Completed",
+                            TransactionType = "Payment",
                             UserId = 1
                         },
                         new
                         {
                             ID = 25,
-                            TransactionAmount = 216,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(9005),
+                            TransactionAmount = 403,
+                            TransactionDate = new DateTime(2024, 2, 8, 0, 47, 22, 916, DateTimeKind.Utc).AddTicks(1930),
                             TransactionDescription = "Description for Transaction 25",
-                            TransactionIcon = "dark-bg1 icon3",
+                            TransactionIcon = "dark-bg1 icon1",
                             TransactionName = "Transaction 25 for Common User",
-                            TransactionStatus = "Pending",
+                            TransactionStatus = "Completed",
                             TransactionType = "Payment",
                             UserId = 1
                         },
                         new
                         {
                             ID = 26,
-                            TransactionAmount = 642,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(9010),
+                            TransactionAmount = 871,
+                            TransactionDate = new DateTime(2024, 2, 16, 7, 22, 18, 0, DateTimeKind.Utc),
                             TransactionDescription = "Description for Transaction 26",
-                            TransactionIcon = "dark-bg3 icon1",
+                            TransactionIcon = "dark-bg3 icon2",
                             TransactionName = "Transaction 26 for Common User",
                             TransactionSenderId = 2,
-                            TransactionStatus = "Pending",
-                            TransactionType = "Credit",
+                            TransactionStatus = "Completed",
+                            TransactionType = "Payment",
                             UserId = 1
                         },
                         new
                         {
                             ID = 27,
-                            TransactionAmount = 474,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(9015),
+                            TransactionAmount = 926,
+                            TransactionDate = new DateTime(2024, 2, 8, 0, 47, 22, 916, DateTimeKind.Utc).AddTicks(1950),
                             TransactionDescription = "Description for Transaction 27",
-                            TransactionIcon = "dark-bg1 icon1",
+                            TransactionIcon = "dark-bg1 icon3",
                             TransactionName = "Transaction 27 for Common User",
-                            TransactionStatus = "Pending",
+                            TransactionStatus = "Completed",
                             TransactionType = "Payment",
                             UserId = 1
                         },
                         new
                         {
                             ID = 28,
-                            TransactionAmount = 815,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(9019),
+                            TransactionAmount = 445,
+                            TransactionDate = new DateTime(2024, 2, 17, 22, 49, 22, 0, DateTimeKind.Utc),
                             TransactionDescription = "Description for Transaction 28",
-                            TransactionIcon = "dark-bg3 icon3",
+                            TransactionIcon = "dark-bg2 icon2",
                             TransactionName = "Transaction 28 for Common User",
                             TransactionStatus = "Pending",
-                            TransactionType = "Credit",
+                            TransactionType = "Payment",
                             UserId = 1
                         },
                         new
                         {
                             ID = 29,
-                            TransactionAmount = 359,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(9025),
+                            TransactionAmount = 720,
+                            TransactionDate = new DateTime(2024, 2, 8, 0, 47, 22, 916, DateTimeKind.Utc).AddTicks(1968),
                             TransactionDescription = "Description for Transaction 29",
-                            TransactionIcon = "dark-bg1 icon1",
+                            TransactionIcon = "dark-bg3 icon1",
                             TransactionName = "Transaction 29 for Common User",
                             TransactionSenderId = 2,
                             TransactionStatus = "Completed",
-                            TransactionType = "Credit",
+                            TransactionType = "Payment",
                             UserId = 1
                         },
                         new
                         {
                             ID = 30,
-                            TransactionAmount = 772,
-                            TransactionDate = new DateTime(2024, 2, 7, 21, 46, 17, 708, DateTimeKind.Utc).AddTicks(9030),
+                            TransactionAmount = 383,
+                            TransactionDate = new DateTime(2024, 2, 20, 15, 1, 43, 0, DateTimeKind.Utc),
                             TransactionDescription = "Description for Transaction 30",
-                            TransactionIcon = "dark-bg3 icon2",
+                            TransactionIcon = "dark-bg3 icon1",
                             TransactionName = "Transaction 30 for Common User",
                             TransactionStatus = "Completed",
                             TransactionType = "Payment",
@@ -463,6 +503,15 @@ namespace Wallet_API.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Wallet_API.Data.DbModels.CardBalance", b =>
+                {
+                    b.HasOne("Wallet_API.Data.DbModels.User", "User")
+                        .WithMany("CardBalances")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Wallet_API.Data.DbModels.Transaction", b =>
                 {
                     b.HasOne("Wallet_API.Data.DbModels.User", "TransactionSender")
@@ -474,6 +523,8 @@ namespace Wallet_API.Migrations
 
             modelBuilder.Entity("Wallet_API.Data.DbModels.User", b =>
                 {
+                    b.Navigation("CardBalances");
+
                     b.Navigation("SentTransactions");
                 });
 #pragma warning restore 612, 618
